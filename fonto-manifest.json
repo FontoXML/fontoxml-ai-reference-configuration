@@ -1,0 +1,7 @@
+{
+	"dependencies": {
+		"fontoxml-platform-base": "platform/fontoxml-platform-base"
+	},
+	"devDependencies": {},
+	"role": "add-on"
+}

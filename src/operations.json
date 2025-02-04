@@ -1,0 +1,17 @@
+{
+	"insert-ai-generated-content": {
+		"label": "Insert",
+		"tooltip": "Insert the generated content into the document",
+		"steps": [
+			{
+				"type": "transform/setOverrideRangeToSelection"
+			},
+			{
+				"type": "operation/insert-text",
+				"data": {
+					"text": "{{text}}"
+				}
+			}
+		]
+	}
+}
