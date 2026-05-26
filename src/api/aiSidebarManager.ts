@@ -28,7 +28,7 @@ class AiSidebarManager {
 	 */
 	private _preconfiguredPrompts: PreconfiguredPrompt[] = [];
 
-	private _lastChangedPromptId: PromptId;
+	private _lastChangedPromptId: PromptId | undefined;
 
 	// Contains the initial send prompt and their responses (not responses of other prompts)
 	// We can use this to render the front end AI cards.
@@ -107,7 +107,7 @@ class AiSidebarManager {
 	 *
 	 * @returns The ID of the prompt that was most recently changed.
 	 */
-	public getLastChangedPromptId(): PromptId {
+	public getLastChangedPromptId(): PromptId | undefined {
 		return this._lastChangedPromptId;
 	}
 
@@ -237,7 +237,9 @@ class AiSidebarManager {
 			endOffset: selectionManager.getEndOffset(),
 		};
 		const promptContext = evaluateXPathToString(
-			xq`fonto:curated-text-in-range($startContainer, $startOffset, $endContainer, $endOffset)`,
+			xq`
+				import module namespace fonto = "http://www.fontoxml.com/functions";
+				fonto:curated-text-in-range($startContainer, $startOffset, $endContainer, $endOffset)`,
 			null,
 			readOnlyBlueprint,
 			queryVariables
